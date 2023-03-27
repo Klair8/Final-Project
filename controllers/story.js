@@ -1,5 +1,5 @@
 
-const  {getStory} = require('../module/story.js'); 
+const  {getStory, getStoryById} = require('../module/story.js'); 
 
   const _getStory =(req,res)=>{   // create the function
     getStory()
@@ -13,6 +13,19 @@ const  {getStory} = require('../module/story.js');
   })
 }
   
+const _getStoryById =(req,res)=>{
+ getStoryById(req.params.id)
+ .then(data=>{
+  console.log('getStorybyid', data)
+  res.json(data)
+ })
+ .catch(err=>{
+  console.log(err)
+ })
+}
+
+
 module.exports ={  // module to export the function
-    _getStory
+    _getStory,
+    _getStoryById
     }

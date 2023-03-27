@@ -1,7 +1,7 @@
 const dotenv = require('dotenv');
 const express = require('express');
 const cors = require('cors');
-const say = require('say');
+// const say = require('say');
 const { db } = require('./config/db.js'); // connect to the database
 
 dotenv.config()
@@ -18,33 +18,26 @@ app.listen(process.env.PORT,() => {
     console.log(`run on ${process.env.PORT}`)
 })
 
-app.get("/message", (req, res) => {
-  res.json({ message: "Hello from server!" });   //connect to react
-});
 
+app.get("/message", (req, res) => {
+  res.json({ message: "you are connected" });
+});
 
 const story_router = require('./routes/story.js');
 
 app.use('/api/story', story_router)  // using this route for the fetch
 
-const readStoryAloud = () => {
-db('storiestest').where({ id: 1 }).first().then((data) => {
-  if (data) {
-    console.log('datascript',data)
-    say.speak(data.story, 'Amelie', 1);
-  }
-}).catch((error) => {
-  console.error(error);
-})
-}
 
-app.post('/api/story/start', (req, res) => {
-    readStoryAloud();
-    res.json({msg: 'Story started'})
-  });
+// for speech to text before and after sending it in front
+// const readStoryAloud = () => {
+// db('storiestest').where({ id: 1 }).first().then((data) => {
+//   if (data) {
+//     console.log('datascript',data)
+//     say.speak(data.story, 'Amelie', 1);
+//   }
+// }).catch((error) => {
+//   console.error(error);
+// })
+// }
 
-//  
-//   and the /api/story/start route calls this function when a POST request is made to it. 
-//   InReact app,  add a button that sends a POST 
-//   request to this route when clicked, which will trigger 
-//   the story to start reading aloud.
+

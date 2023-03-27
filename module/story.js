@@ -8,7 +8,16 @@ const getStory = () =>{    // get all the items
     .returning('*')
 }
 
+
+const getStoryById = (pid) => {
+    return db('storiestes')
+    .select('id','name','price')
+    .where({id:pid})
+  }
+  
+
 module.exports ={  // module to export the query
-    getStory
+    getStory,
+    getStoryById
     }
   
