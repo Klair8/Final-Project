@@ -9,7 +9,7 @@ const  {getStory, getStoryById} = require('../module/story.js');
   })
   .catch(err =>{
       console.log(err)
-      res.status(404).json({msgcontr:'error'})
+      res.status(404).json({msgcontrollers:'error'})
   })
 }
   
