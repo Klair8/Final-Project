@@ -11,7 +11,7 @@ const getStory = () =>{    // get all the items
 
 const getStoryById = (pid) => {
     return db('storyeng')
-    .select('id','title','description','author')
+    .select('id','title','description','story','author')
     .where({id:pid})
   }
   
