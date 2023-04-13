@@ -2,16 +2,16 @@ const {db} = require('../config/db.js');
 
 
 const getStory = () =>{    // get all the items
-    return db('storyeng')  // ma database
-    .select('id','title','description','story', 'author')
+    return db('stories')  // ma database
+    .select('id','title','description','story', 'author','image_url','level','style')
     .orderBy('title')  
     .returning('*')
 }
 
 
 const getStoryById = (pid) => {
-    return db('storyeng')
-    .select('id','title','description','story','author')
+    return db('stories')
+    .select('id','title','description','story','author','image_url','level','style')
     .where({id:pid})
   }
   
